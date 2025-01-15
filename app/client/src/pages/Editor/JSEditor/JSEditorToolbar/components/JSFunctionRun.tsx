@@ -1,4 +1,6 @@
 import React, { useCallback } from "react";
+import { truncate } from "lodash";
+
 import { useFeatureFlag } from "utils/hooks/useFeatureFlag";
 import { FEATURE_FLAG } from "ee/entities/FeatureFlag";
 import { JSFunctionRun as OldJSFunctionRun } from "./old/JSFunctionRun";
@@ -15,6 +17,7 @@ import type { JSActionDropdownOption } from "../types";
 import { RUN_BUTTON_DEFAULTS, testLocators } from "../constants";
 import { createMessage, NO_JS_FUNCTION_TO_RUN } from "ee/constants/messages";
 import { JSFunctionItem } from "./JSFunctionItem";
+import { JS_FUNCTION_RUN_NAME_LENGTH } from "./constants";
 
 interface Props {
   disabled: boolean;
@@ -34,7 +37,6 @@ interface Props {
  */
 export const JSFunctionRun = (props: Props) => {
   const { onSelect } = props;
-
   const isActionRedesignEnabled = useFeatureFlag(
     FEATURE_FLAG.release_actions_redesign_enabled,
   );
@@ -59,24 +61,29 @@ export const JSFunctionRun = (props: Props) => {
       <Menu>
         <MenuTrigger>
           <Button
+            data-testid="t--js-function-run"
             endIcon="arrow-down-s-line"
             isDisabled={props.disabled}
             kind="tertiary"
             size="sm"
             startIcon="js-function"
           >
-            {props.selected.label}
+            {truncate(props.selected.label, {
+              length: JS_FUNCTION_RUN_NAME_LENGTH,
+            })}
           </Button>
         </MenuTrigger>
-        <MenuContent align="end">
-          {props.options.map((option) => (
-            <JSFunctionItem
-              key={option.label}
-              onSelect={onFunctionSelect}
-              option={option}
-            />
-          ))}
-        </MenuContent>
+        {!!props.options.length && (
+          <MenuContent align="end" data-testid="t--js-functions-menu">
+            {props.options.map((option) => (
+              <JSFunctionItem
+                key={option.label}
+                onSelect={onFunctionSelect}
+                option={option}
+              />
+            ))}
+          </MenuContent>
+        )}
       </Menu>
 
       <Tooltip
@@ -86,6 +93,7 @@ export const JSFunctionRun = (props: Props) => {
       >
         <Button
           className={testLocators.runJSAction}
+          data-testid={testLocators.runJSActionTestID}
           isDisabled={props.disabled}
           isLoading={props.isLoading}
           onClick={props.onButtonClick}

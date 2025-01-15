@@ -24,15 +24,7 @@ export interface AppsmithUIConfigs {
     deploymentName: string;
     serviceInstanceId: string;
     serviceName: string;
-  };
-  newRelic: {
-    enableNewRelic: boolean;
-    accountId: string;
-    applicationId: string;
-    browserAgentlicenseKey: string;
-    browserAgentEndpoint: string;
-    otlpLicenseKey: string;
-    otlpEndpoint: string;
+    tracingUrl: string;
   };
   segment: {
     enabled: boolean;
@@ -55,8 +47,6 @@ export interface AppsmithUIConfigs {
   appVersion: AppVersionData;
   intercomAppID: string;
   mailEnabled: boolean;
-
-  cloudServicesBaseUrl: string;
 
   googleRecaptchaSiteKey: {
     enabled: boolean;

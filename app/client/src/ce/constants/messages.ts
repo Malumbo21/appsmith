@@ -365,7 +365,7 @@ export const DATASOURCE_UPDATE = (dsName: string) =>
   `${dsName} datasource updated successfully`;
 export const DATASOURCE_VALID = (dsName: string) =>
   `${dsName} datasource is valid`;
-export const EDIT_DATASOURCE = () => "Edit";
+export const EDIT_DATASOURCE = () => "Edit configuration";
 export const SAVE_DATASOURCE = () => "Save URL";
 export const EDIT_DATASOURCE_TOOLTIP = () => "Edit datasource";
 export const SAVE_DATASOURCE_TOOLTIP = () => "Save URL as a datasource";
@@ -393,6 +393,23 @@ export const CREATE_NEW_DATASOURCE_DATABASE_HEADER = () => "Databases";
 export const CREATE_NEW_DATASOURCE_MOST_POPULAR_HEADER = () => "Most popular";
 export const CREATE_NEW_DATASOURCE_REST_API = () => "REST API";
 export const SAMPLE_DATASOURCES = () => "Sample datasources";
+export const SAMPLE_DATASOURCE_SUBHEADING = () =>
+  "Use sample datasources if you don’t have a datasource for testing";
+export const EDIT_DS_CONFIG = () => "Edit datasource configuration";
+export const NOT_FOUND = () => "Not found";
+export const CREATE_NEW_DATASOURCE_AUTHENTICATED_REST_API = () =>
+  "Authenticated API";
+export const CREATE_NEW_DATASOURCE_GRAPHQL_API = () => "GraphQL API";
+export const CREATE_NEW_API_SECTION_HEADER = () => "APIs";
+export const CREATE_NEW_SAAS_SECTION_HEADER = () => "SaaS integrations";
+export const CREATE_NEW_AI_SECTION_HEADER = () => "AI integrations";
+export const CONNECT_A_DATASOURCE_HEADING = () => "Connect a datasource";
+export const CONNECT_A_DATASOURCE_SUBHEADING = () =>
+  "Select a sample datasource or connect your own";
+export const SEARCH_FOR_DATASOURCES = () => "Search for datasources";
+export const EMPTY_SEARCH_DATASOURCES_TITLE = () => "No results found";
+export const EMPTY_SEARCH_DATASOURCES_DESCRIPTION = () =>
+  "Please try again with a different search";
 
 export const ERROR_EVAL_ERROR_GENERIC = () =>
   `Unexpected error occurred while evaluating the application`;
@@ -476,6 +493,8 @@ export const PAGE_SERVER_UNAVAILABLE_ERROR_CODE = () => "503";
 // Modules
 export const CONVERT_MODULE_CTA_TEXT = () => "Create module";
 export const CONVERT_MODULE_TO_NEW_PKG_OPTION = () => "Add to a new package";
+export const PACKAGE_UPGRADING_ACTION_STATUS = (action: string) =>
+  `You're not able to ${action} while package references are updating. Please wait until the update is complete.`;
 
 // cloudHosting used in EE
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -556,10 +575,11 @@ export const LOGS_FILTER_OPTION_CONSOLE = () => "Console logs";
 export const LOGS_FILTER_OPTION_SYSTEM = () => "System logs";
 export const NO_LOGS = () => "No logs to show";
 export const NO_ERRORS = () => "No signs of trouble here!";
-export const DEBUGGER_ERRORS = () => "Errors";
+export const DEBUGGER_ERRORS = () => "Linter";
 export const DEBUGGER_RESPONSE = () => "Response";
 export const DEBUGGER_HEADERS = () => "Headers";
 export const DEBUGGER_LOGS = () => "Logs";
+export const DEBUGGER_STATE = () => "State";
 
 export const INSPECT_ENTITY = () => "Inspect entity";
 export const INSPECT_ENTITY_BLANK_STATE = () => "Select an entity to inspect";
@@ -569,6 +589,7 @@ export const ACTION_CONFIGURATION_UPDATED = () => "Configuration updated";
 export const WIDGET_PROPERTIES_UPDATED = () => "Widget properties were updated";
 export const EMPTY_RESPONSE_FIRST_HALF = () => "🙌 Click on";
 export const EMPTY_RESPONSE_LAST_HALF = () => "to get a response";
+export const EMPTY_RESPONSE_RUN = () => "Click ‘Run’ to get a response";
 export const EMPTY_JS_RESPONSE_LAST_HALF = () =>
   "to view response of selected function";
 export const INVALID_EMAIL = () => "Please enter a valid email";
@@ -628,8 +649,9 @@ export const EXPORT_DEFAULT_BEGINNING = () =>
   `Start object with export default`;
 export const ACTION_EXECUTION_FAILED = (actionName: string) =>
   `The action "${actionName}" has failed.`;
-export const JS_EXECUTION_SUCCESS = () => "JS Function executed successfully";
-export const JS_EXECUTION_FAILURE = () => "JS Function execution failed";
+export const JS_EXECUTION_TRIGGERED = () => "Function triggered";
+export const JS_EXECUTION_SUCCESS = () => "Function executed";
+export const JS_EXECUTION_FAILURE = () => "Function execution failed";
 export const JS_EXECUTION_FAILURE_TOASTER = () =>
   "There was an error while executing function";
 export const JS_SETTINGS_ONPAGELOAD = () => "Run function on page load (Beta)";
@@ -804,7 +826,7 @@ export const SCHEMA_NOT_AVAILABLE = () =>
   "We can't show schema for this datasource";
 export const TABLE_NOT_FOUND = () => "Table not found.";
 export const DATASOURCE_STRUCTURE_INPUT_PLACEHOLDER_TEXT = (name: string) =>
-  `Tables in ${name}`;
+  `Search tables in ${name}`;
 export const SCHEMA_LABEL = () => "Schema";
 export const STRUCTURE_NOT_FETCHED = () =>
   "We could not fetch the schema of the database.";
@@ -1066,6 +1088,10 @@ export const IS_EMPTY_REPO_QUESTION = () =>
 export const HOW_TO_CREATE_EMPTY_REPO = () => "How to create a new repository?";
 export const IMPORT_APP_IF_NOT_EMPTY = () =>
   "If you already have an app connected to Git, you can import it to the workspace.";
+export const IMPORT_ARTIFACT_IF_NOT_EMPTY = (artifactType: string) =>
+  `If you already have an ${artifactType.toLocaleLowerCase()} connected to Git, you can import it to the workspace.`;
+export const I_HAVE_EXISTING_ARTIFACT_REPO = (artifactType: string) =>
+  `I have an existing appsmith ${artifactType.toLocaleLowerCase()} connected to Git`;
 export const I_HAVE_EXISTING_REPO = () =>
   "I have an existing appsmith app connected to Git";
 export const ERROR_REPO_NOT_EMPTY_TITLE = () =>
@@ -2270,19 +2296,34 @@ export const COMMUNITY_TEMPLATES = {
 
 // Interim data state info
 export const EMPTY_TABLE_TITLE_TEXT = () => "Empty table";
+export const EMPTY_SCHEMA_TITLE_TEXT = () => "Empty schema";
 export const EMPTY_TABLE_MESSAGE_TEXT = () =>
   "There are no data records to show";
+export const EMPTY_SCHEMA_MESSAGE_TEXT = () =>
+  "There are no schema records to show";
 export const NO_COLUMNS_MESSAGE_TEXT = () => "There are no columns to show";
-export const LOADING_RECORDS_TITLE_TEXT = () => "Loading records";
+export const LOADING_RECORDS_TITLE_TEXT = () => "Loading columns";
+export const LOADING_SCHEMA_TITLE_TEXT = () => "Loading schema";
 export const LOADING_RECORDS_MESSAGE_TEXT = () => "This may take a few seconds";
-export const FAILED_RECORDS_TITLE_TEXT = () => "Failed to load";
+export const FAILED_RECORDS_TITLE_TEXT = () => "Failed to load datasource";
 export const FAILED_RECORDS_MESSAGE_TEXT = () =>
-  "There was an error connecting to the datasource. Please check the datasource configuration and retry. If the issue persists, review the datasource settings.";
+  "Please check the datasource configuration and retry.";
+export const DATASOURCE_SWITCHER_MENU_GROUP_NAME = () => "Select a datasource";
+export const CANT_SHOW_SCHEMA = () =>
+  "We can’t show the schema for this datasource";
+export const COLUMNS_TITLE = () => "Columns";
+export const COLUMNS_SEARCH_PLACEHOLDER = (tableName: string) =>
+  `Search columns in ${tableName}`;
+export const NO_ACCESS_TITLE_TEXT = () =>
+  "You do not have access to this datasource";
+export const NO_ACCESS_MESSAGE_TEXT = () =>
+  "Please contact your workspace administrator to gain access";
 
 export const DATA_PANE_TITLE = () => "Datasources in your workspace";
 export const DATASOURCE_LIST_BLANK_DESCRIPTION = () =>
   "Connect a datasource to write your first query";
 export const DATASOURCE_BLANK_STATE_MESSAGE = () => "No datasources to display";
+export const DATASOURCE_BLANK_STATE_CTA = () => "Bring your data";
 
 // Create New Apps Intermediary step
 export const CREATE_NEW_APPS_STEP_TITLE = () => "How would you like to start?";
@@ -2297,9 +2338,6 @@ export const START_FROM_SCRATCH_SUBTITLE = () =>
 export const START_WITH_DATA_TITLE = () => "Start with data";
 export const START_WITH_DATA_SUBTITLE = () =>
   "Get started with connecting your data, and easily craft a functional application.";
-export const START_WITH_DATA_CONNECT_HEADING = () => "Connect your datasource";
-export const START_WITH_DATA_CONNECT_SUBHEADING = () =>
-  "Select an option to establish a connection. Your data's security is our priority.";
 export const START_WITH_TEMPLATE_CONNECT_HEADING = () => "Select a template";
 export const START_WITH_TEMPLATE_CONNECT_SUBHEADING = () =>
   "Choose an option below to embark on your app-building adventure!";
@@ -2354,8 +2392,6 @@ export const PARTIAL_IMPORT_EXPORT = {
     modalSubheading: () => "Import partial application from file",
   },
 };
-
-export const DATASOURCE_SECURELY_TITLE = () => "Secure & fast connection";
 
 export const CUSTOM_WIDGET_FEATURE = {
   addEvent: {
@@ -2475,7 +2511,8 @@ export const ADD_PAGE_FROM_TEMPLATE_MODAL = {
 
 export const HEADER_TITLES = {
   DATA: () => "Data",
-  EDITOR: () => "Pages",
+  PAGES: () => "Pages",
+  EDITOR: () => "Editor",
   SETTINGS: () => "Settings",
   LIBRARIES: () => "Libraries",
 };
@@ -2532,3 +2569,59 @@ export const CUSTOM_WIDGET_BUILDER_TAB_TITLE = {
   STYLE: () => "Style",
   JS: () => "Javascript",
 };
+
+export const REQUEST_NEW_INTEGRATIONS = {
+  UNABLE_TO_FIND: () => "Can’t find what you are looking for?",
+  REQUEST_NEW_BUTTON: () => "Request a new integration",
+  REQUEST_BUTTON: () => "Request integration",
+  CANCEL_BUTTON: () => "Cancel",
+  REQUEST_MODAL_HEADING: () => "Request a new integration",
+  REQUEST_MODAL_INTEGRATION: {
+    LABEL: () => "Integration",
+    PLACEHOLDER: () => "E.g. Zendesk, JIRA, Slack, others",
+    NAME: "integration",
+    ERROR: () => "Please enter integration name",
+  },
+  REQUEST_MODAL_USECASE: {
+    LABEL: () => "Tell us more about your case",
+    PLACEHOLDER: () =>
+      "E.g. I want to create an app to manage my customers’ account.",
+    NAME: "useCase",
+  },
+  REQUEST_MODAL_EMAIL: {
+    LABEL: () => "Email",
+    DESCRIPTION: () =>
+      "Appsmith will use this email exclusively to follow up on your integration request.",
+    NAME: "email",
+    ERROR: () => "Please enter email",
+  },
+  SUCCESS_TOAST_MESSAGE: () => "Thank you! We are looking into your request.",
+};
+
+export const PREMIUM_DATASOURCES = {
+  RELEVANT_EMAIL_DESCRIPTION: () =>
+    "Unblock advanced integrations. Let our team guide you in selecting the plan that fits your needs. Schedule a call now to see how Appsmith can transform your workflows!",
+  NON_RELEVANT_EMAIL_DESCRIPTION: () =>
+    "Unblock advanced integrations. Let our team guide you in selecting the plan that fits your needs. Give us your email and the Appsmith team will reach out to you soon.",
+  LEARN_MORE: () => "Learn more about Premium",
+  SCHEDULE_CALL: () => "Schedule a call",
+  SUBMIT: () => "Submit",
+  SUCCESS_TOAST_MESSAGE: () =>
+    "Thank you! The Appsmith Team will contact you shortly.",
+  FORM_EMAIL: {
+    LABEL: () => "Email",
+    DESCRIPTION: () =>
+      "Appsmith will use this email to follow up on your integration interest.",
+    NAME: "email",
+    ERROR: () => "Please enter email",
+  },
+  PREMIUM_TAG: () => "Premium",
+  SOON_TAG: () => "Soon",
+  COMING_SOON_SUFFIX: () => "Coming soon",
+  COMING_SOON_DESCRIPTION: () =>
+    "The Appsmith Team is actively working on it. We’ll let you know when this integration is live. ",
+  NOTIFY_ME: () => "Notify me",
+};
+
+export const DATASOURCE_SECURE_TEXT = () =>
+  `When connecting datasources, your passwords are AES-256 encrypted and we never store any of your data.`;

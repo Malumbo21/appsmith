@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFeatureFlag } from "utils/hooks/useFeatureFlag";
 import { FEATURE_FLAG } from "ee/entities/FeatureFlag";
-import type { ReduxAction } from "ee/constants/ReduxActionConstants";
+import type { ReduxAction } from "actions/ReduxActionTypes";
 import { getSavingStatusForJSObjectName } from "selectors/actionSelectors";
 import { getAssetUrl } from "ee/utils/airgapHelpers";
 import { Text as ADSText, Flex } from "@appsmith/ads";
@@ -129,7 +129,10 @@ export const JSObjectNameEditor = ({
   }
 
   return (
-    <NameWrapper onDoubleClick={handleDoubleClick}>
+    <NameWrapper
+      data-testid="t--js-object-name-editor"
+      onDoubleClick={handleDoubleClick}
+    >
       <EditableName
         exitEditing={exitEditMode}
         icon={icon}
